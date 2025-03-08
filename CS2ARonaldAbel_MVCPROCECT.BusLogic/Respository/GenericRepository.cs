@@ -6,13 +6,13 @@ using System.Data.SqlClient;
 using System.Reflection;
 using System.Text;
 
-namespace CS2ARonaldAbel_MVCPROCECT.BusLogic.Respository
+namespace CS2ARonaldAbel_MVCPROJECT.BusLogic.Respository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         IDbConnection _connection;
 
-        readonly string connectionString = "Server=DESKTOP-NATU95R\\SQLEXPRESS; Database=SampleMVC_db; Trusted_Connection=True; MultipleActiveResultSets=true";
+        readonly string connectionString = "Server=PL25\\SQLEXPRESS; Database=Student_DB; Trusted_Connection=True; MultipleActiveResultSets=true";
         public GenericRepository()
         {
 

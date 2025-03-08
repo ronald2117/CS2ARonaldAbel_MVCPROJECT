@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CS2ARonaldAbel_MVCPROCECT.BusLogic\CS2ARonaldAbel_MVCPROCECT.BusLogic.csproj" />
+    <ProjectReference Include="..\CS2ARonaldAbel_MVCPROCECT.BusLogic\CS2ARonaldAbel_MVCPROJECT.BusLogic.csproj" />
   </ItemGroup>
 
 </Project>
