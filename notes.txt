@@ -1,0 +1,28 @@
+Add new project(class library) named [Projectname].BusLogic
+create folders on this project
+-Model
+-Respository
+-Service
+
+#Add packages to this project
+2.1.35 Dapper
+Configuration.FileExtension 8.0.0
+System.Data.SqlClient 4.8.6
+
+Main:
+Newtonsoft.Json  13.0.3
+
+-Add class to Repository folder named: "Generic Repository.cs"
+
+remove the imports
+make it public
+
+IGenericRepository
+remove the imports
+make it public
+
+
+public interface IGenericRepository<T> where T : class
+{
+    T GetById(int id);
+}
