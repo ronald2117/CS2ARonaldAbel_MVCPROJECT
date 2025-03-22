@@ -7,19 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Student\AddNewStudent.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CS2ARonaldAbel_MVCPROCECT.BusLogic\CS2ARonaldAbel_MVCPROJECT.BusLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Student\AddNewStudent.cshtml" />
   </ItemGroup>
 
 </Project>

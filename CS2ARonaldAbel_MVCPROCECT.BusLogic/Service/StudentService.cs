@@ -11,5 +11,10 @@ namespace CS2ARonaldAbel_MVCPROJECT.BusLogic.Service
         {
             return _studentRepository.GetAll();
         }
+
+        public bool Add(tblStudent student)
+        {
+            return _studentRepository.Add(student);
+        }
     }
 }

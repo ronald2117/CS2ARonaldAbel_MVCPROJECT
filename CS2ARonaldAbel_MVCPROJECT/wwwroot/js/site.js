@@ -12,3 +12,16 @@
         alert('An error occurred while adding student. Please try again later.');
     }
 }
+
+$(document).ready(function () {
+    $('#addStudentForm').on('submit', function (e) {
+        e.preventDefault();
+        const student = {
+            FirstName: $('#FirstName').val(),
+            LastName: $('#LastName').val(),
+            Age: $('#Age').val(),
+            Course: $('#Course').val(),
+        };
+        AddStudent(student);
+    })
+});
