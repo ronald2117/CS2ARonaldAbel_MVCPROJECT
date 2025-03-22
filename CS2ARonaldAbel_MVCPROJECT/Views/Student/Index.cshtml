@@ -1,20 +1,24 @@
 ﻿@model IEnumerable<CS2ARonaldAbel_MVCPROJECT.BusLogic.Model.tblStudent>
-
 <div>
-    <h2>Student List</h2>
-    <table>
+    <table class="table">
+        <section class="table__primary">
+            <h2>Student Information</h2>
+            <a class="btn btn-primary m-2" href="/Student/AddNewStudent">Add New Student</a>
+        </section>
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>LastName</th>
-                <th>Age</th>
-                <th>Course</th>
+                <th scope="row">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Course</th>
             </tr>
         </thead>
         <tbody>
                 @foreach (var student in Model)
                 {
                     <tr>
+                        <td scope="row">@student.Id</td>
                         <td>@student.FirstName</td>
                         <td>@student.LastName</td>
                         <td>@student.Age</td>
