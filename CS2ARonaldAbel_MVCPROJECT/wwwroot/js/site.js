@@ -2,8 +2,8 @@
     try {
         const result = await AjaxPOST("/Student/AddStudent", student);
         if (result.success) {
-            alert('Student added successfully!');
-            window.location.href = "/Student/Index"; //Babalik sa index kapag nag add ng student
+            alert('Student added successfullyy!');
+            window.location.href = "/Student/Index"; //Babalik sa index kapag nag add ng studentx`
         } else {
             alert('Failed to add student: ' + result.message);
         }
@@ -26,18 +26,33 @@ $(document).ready(function () {
     })
 });
 
-const GetStudentById = async (id) => {
+const GetStudentById = async (studentId) => {
     try {
-        const result = await AjaxGET(`/Student/GetStudent/${id}`);
+        const result = await AjaxGET(`/Student/GetStudent/${studentId}`);
         if (result.success) {
             const student = result.data;
             // Do something with the student data
-            console.log(student);
         } else {
             alert('Failed to get student: ' + result.message);
         }
     } catch (error) {
         console.error('Error getting student: ' + error);
         alert('An error occurred while getting student. Please try again later.');
+    }
+}
+
+
+const UpdateStudent = async (studentId, updatedStudent) => {
+    try {
+        const result = await AjaxPOST(`/Student/UpdateStudent/${studentId}`, updatedStudent);
+        if (result.success) {
+            alert('Student updated successfully!');
+            window.location.href = "/Student/Index";
+        } else {
+            alert('Failed to update student: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error updating student: ' + error);
+        alert('An error occurred while updating student. Please try again later.');
     }
 }

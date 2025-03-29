@@ -12,3 +12,4 @@ const AjaxPOST = async (url, data) => {
         data: data
     });
 }
+

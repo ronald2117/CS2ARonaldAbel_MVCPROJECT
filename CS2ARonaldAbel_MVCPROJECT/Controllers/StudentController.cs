@@ -35,9 +35,14 @@ namespace CS2ARonaldAbel_MVCPROJECT.Controllers
             }
         }
 
-        public IActionResult EditStudent(int id)
+        public IActionResult GetStudent(int id)
         {
             var student = _studentService.GetStudentById(id);
             return View(student);
+        }
+
+        public IActionResult EditStudent()
+        {
+            return View();
         }
     }}
