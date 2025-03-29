@@ -25,3 +25,19 @@ $(document).ready(function () {
         AddStudent(student);
     })
 });
+
+const GetStudentById = async (id) => {
+    try {
+        const result = await AjaxGET(`/Student/GetStudent/${id}`);
+        if (result.success) {
+            const student = result.data;
+            // Do something with the student data
+            console.log(student);
+        } else {
+            alert('Failed to get student: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error getting student: ' + error);
+        alert('An error occurred while getting student. Please try again later.');
+    }
+}

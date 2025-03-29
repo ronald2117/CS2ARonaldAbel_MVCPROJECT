@@ -12,6 +12,7 @@
                 <th scope="col">Last Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Course</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,10 @@
                         <td>@student.LastName</td>
                         <td>@student.Age</td>
                         <td>@student.Course</td>
+                    <td>
+                        <a href="/Student/EditStudent/@student.Id" class="btn btn-warning m-2">Edit</a>
+                        <a href="/Student/DeleteStudent/@student.Id" class="btn btn-danger m-2">Delete</a>
+                    </td>
                     </tr>
                 }
         </tbody>
