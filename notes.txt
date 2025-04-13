@@ -4,12 +4,12 @@ create folders on this project
 -Respository
 -Service
 
-#Add packages to this project
+#Add packages to this project (BusLogic)
 2.1.35 Dapper
 Configuration.FileExtension 8.0.0
 System.Data.SqlClient 4.8.6
 
-Main:
+Main Project:
 Newtonsoft.Json  13.0.3
 
 -Add class to Repository folder named: "Generic Repository.cs"
