@@ -110,22 +110,23 @@ namespace CS2ARonaldAbel_MVCPROJECT.BusLogic.Respository
             return result.FirstOrDefault();
         }
 
-        public T Delete(int id)
+        public bool Delete(int id)
         {
-            IEnumerable<T> result = null;
             try
             {
                 string tableName = GetTableName();
                 string keyColumn = GetKeyColumnName();
 
-                string query = $"DELETE FROM {tableName} WHERE {keyColumn} = '{id}'";
-                result = _connection.Query<T>(query);
+                string query = $"DELETE FROM {tableName} WHERE {keyColumn} = @Id";
+                int rowsAffected = _connection.Execute(query, new { Id = id });
+
+                return rowsAffected > 0; // Return true if a record was deleted
             }
             catch (Exception ex)
             {
-                // Handle exception or log error
+                // Log or handle the exception appropriately
+                throw new Exception($"An error occurred while deleting the record: {ex.Message}", ex);
             }
-            return result.FirstOrDefault();
         }
         public bool Update(T entity)
         {

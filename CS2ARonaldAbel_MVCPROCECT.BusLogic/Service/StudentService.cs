@@ -21,5 +21,10 @@ namespace CS2ARonaldAbel_MVCPROJECT.BusLogic.Service
         {
             return _studentRepository.GetById(id);
         }
+
+        public bool Delete(int id)
+        {
+            return _studentRepository.Delete(id);
+        }
     }
 }

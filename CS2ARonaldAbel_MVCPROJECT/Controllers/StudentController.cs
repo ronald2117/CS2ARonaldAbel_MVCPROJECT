@@ -72,4 +72,34 @@ namespace CS2ARonaldAbel_MVCPROJECT.Controllers
         {
             return View();
         }
+        public IActionResult DeleteStudent(int id)
+        {
+            try
+            {
+                bool result = _studentService.Delete(id);
+
+                if (result)
+                {
+                    TempData["AlertMessage"] = "Student deleted successfully.";
+                }
+                else
+                {
+                    TempData["AlertMessage"] = "Failed to delete the student. Please try again.";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Handle database-related errors
+                TempData["AlertMessage"] = $"Database error: {sqlEx.Message}";
+            }
+            catch (Exception ex)
+            {
+                // Handle all other exceptions
+                TempData["AlertMessage"] = $"An unexpected error occurred: {ex.Message}";
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
     }}
