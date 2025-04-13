@@ -26,5 +26,10 @@ namespace CS2ARonaldAbel_MVCPROJECT.BusLogic.Service
         {
             return _studentRepository.Delete(id);
         }
+
+        public bool Update(tblStudent student)
+        {
+            return _studentRepository.Update(student);
+        }
     }
 }

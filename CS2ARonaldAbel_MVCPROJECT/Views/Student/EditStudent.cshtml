@@ -1,35 +1,46 @@
-﻿<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0">Edit Student</h3>
-                </div>
-                <div class="card-body">
-                    <form id="editStudentForm">
-                        <div class="mb-3">
-                            <label for="FirstName" class="form-label">FirstName</label>
-                            <input type="text" class="form-control" id="FirstName" name="FirstName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="LastName" class="form-label">LastName</label>
-                            <input type="text" class="form-control" id="LastName" name="LastName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Age" class="form-label">Age</label>
-                            <input type="number" class="form-control" id="Age" name="Age" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Course" class="form-label">Course</label>
-                            <input type="text" class="form-control" id="Course" name="Course" required>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="/Student/Index" class="btn btn-secondary">Cancel</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+﻿
+@model CS2ARonaldAbel_MVCPROJECT.BusLogic.Model.tblStudent;
+
+<div class="container mt-4">
+   <div class="row justify-content-center">
+       <div class="col-md-6">
+           <div class="card">
+               <div class="card-header bg-primary text-white">
+                   <h3 class="mb-0">Edit Student</h3>
+               </div>
+               <div class="card-body">
+                   <form asp-action="UpdateStudent" method="post">
+                       <div class="mb-3">
+                           <label asp-for="FirstName" class="form-label">First Name</label>
+                           <input asp-for="FirstName" type="text" class="form-control" id="FirstName" value="@Model.FirstName" required>
+                           <span asp-validation-for="FirstName" class="text-danger"></span>
+                       </div>
+                       <div class="mb-3">
+                           <label asp-for="LastName" class="form-label">Last Name</label>
+                           <input asp-for="LastName" type="text" class="form-control" id="LastName" value="@Model.LastName" required>
+                           <span asp-validation-for="LastName" class="text-danger"></span>
+                       </div>
+                       <div class="mb-3">
+                           <label asp-for="Age" class="form-label">Age</label>
+                           <input asp-for="Age" type="number" class="form-control" id="Age" value="@Model.Age" required>
+                           <span asp-validation-for="Age" class="text-danger"></span>
+                       </div>
+                       <div class="mb-3">
+                           <label asp-for="Course" class="form-label">Course</label>
+                           <input asp-for="Course" type="text" class="form-control" id="Course" value="@Model.Course" required>
+                           <span asp-validation-for="Course" class="text-danger"></span>
+                       </div>
+                       <div class="d-flex justify-content-between">
+                           <button type="submit" class="btn btn-primary">Save</button>
+                           <a asp-page="/Student/Index" class="btn btn-secondary">Cancel</a>
+                       </div>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
 </div>
+
+@section Scripts {
+   <partial name="_ValidationScriptsPartial" />
+}

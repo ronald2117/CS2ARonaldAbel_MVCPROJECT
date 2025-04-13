@@ -68,9 +68,27 @@ namespace CS2ARonaldAbel_MVCPROJECT.Controllers
             return View(student);
         }
 
-        public IActionResult EditStudent()
+        [HttpGet]
+        public IActionResult EditStudent(int id)
         {
-            return View();
+            if (id <= 0)
+            {
+                return BadRequest("Invalid Student ID provided.");
+            }
+
+            try
+            {
+                var student = _studentService.GetStudentById(id);
+                if (student == null)
+                {
+                    return NotFound($"Student with ID {id} not found.");
+                }
+                return View(student);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while retrieving student data for editing.");
+            }
         }
         public IActionResult DeleteStudent(int id)
         {
@@ -100,6 +118,55 @@ namespace CS2ARonaldAbel_MVCPROJECT.Controllers
 
             return RedirectToAction("Index");
         }
+        public IActionResult UpdateStudent(int id)
+        {
+            var student = _studentService.GetStudentById(id);
+            if (student == null)
+            {
+                TempData["AlertMessage"] = "Student not found.";
+                return RedirectToAction("Index");
+            }
+            return View(student);
+        }
 
+        [HttpPost]
+        public IActionResult UpdateStudentFormSubmit(tblStudent student)
+        {
+            try
+            {
+                if (student == null)
+                {
+                    return Json(new { success = false, message = "Invalid student data provided." });
+                }
+
+                bool result = _studentService.Update(student);
+
+                if (result)
+                {
+                    return Json(new { success = true, message = "Student updated successfully." });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Failed to update the student. Please try again." });
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                // Handle database-related errors
+                return Json(new { success = false, message = $"Database error: {sqlEx.Message}" });
+            }
+            catch (ValidationException valEx)
+            {
+                // Handle validation errors
+                return Json(new { success = false, message = $"Validation error: {valEx.Message}" });
+            }
+            catch (Exception ex)
+            {
+                // Handle all other exceptions
+                return Json(new { success = false, message = $"An unexpected error occurred: {ex.Message}" });
+            }
+        }
+        
+        
 
     }}
