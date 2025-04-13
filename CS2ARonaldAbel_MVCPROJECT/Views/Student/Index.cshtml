@@ -3,7 +3,7 @@
     <table class="table">
         <section class="table__primary">
             <h2>Student Information</h2>
-            <a class="btn btn-primary m-2" href="/Student/AddNewStudent">Add New Student</a>
+            <a class="btn btn-primary m-2" href="/Student/AddStudent">Add New Student</a>
         </section>
         <thead>
             <tr>
@@ -16,6 +16,8 @@
             </tr>
         </thead>
         <tbody>
+            @if (Model != null)
+            {
                 @foreach (var student in Model)
                 {
                     <tr>
@@ -24,12 +26,14 @@
                         <td>@student.LastName</td>
                         <td>@student.Age</td>
                         <td>@student.Course</td>
-                    <td>
-                        <a href="/Student/EditStudent/@student.Id" class="btn btn-warning m-2">Edit</a>
-                        <a href="/Student/DeleteStudent/@student.Id" class="btn btn-danger m-2">Delete</a>
-                    </td>
+                        <td>
+                            <a href="/Student/EditStudent/@student.Id" class="btn btn-warning m-2">Edit</a>
+                            <a asp-action="DeleteStudent" class="btn btn-danger m-2">Delete</a>
+                        </td>
                     </tr>
                 }
+            }
+                
         </tbody>
     </table>
 </div>

@@ -61,7 +61,21 @@ namespace CS2ARonaldAbel_MVCPROJECT.BusLogic.Respository
 
                 rowsEffected = _connection.Execute(query, entity);
             }
-            catch (Exception ex) { }
+            catch (SqlException sqlEx)
+            {
+                // Log or handle SQL-specific exceptions
+                throw new Exception($"SQL Error: {sqlEx.Message}", sqlEx);
+            }
+            catch (InvalidOperationException invalidOpEx)
+            {
+                // Handle invalid operations, such as connection issues
+                throw new Exception($"Invalid Operation: {invalidOpEx.Message}", invalidOpEx);
+            }
+            catch (Exception ex)
+            {
+                // Catch any other general exceptions
+                throw new Exception($"An unexpected error occurred: {ex.Message}", ex);
+            }
 
             return rowsEffected > 0 ? true : false;
         }

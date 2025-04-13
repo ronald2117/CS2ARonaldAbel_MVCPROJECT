@@ -18,14 +18,13 @@ namespace CS2ARonaldAbel_MVCPROJECT.Controllers
             return View(students);
         }
 
-        public IActionResult AddNewStudent()
+        public IActionResult AddStudent(tblStudent student)
         {
-            return View();
+            return View(student);
         }
 
         [HttpPost]
-        [HttpPost]
-        public IActionResult AddStudent(tblStudent student)
+        public IActionResult AddStudentFormSubmit(tblStudent student)
         {
             try
             {
@@ -37,9 +36,9 @@ namespace CS2ARonaldAbel_MVCPROJECT.Controllers
                 bool result = _studentService.Add(student);
 
                 if (result)
-                {
+                {   
                     return Json(new { success = true, message = "Student added successfully." });
-                }
+                }   
                 else
                 {
                     return Json(new { success = false, message = "Failed to add the student. Please try again." });
