@@ -1,33 +1,32 @@
 ﻿@model CS2ARonaldAbel_MVCPROJECT.BusLogic.Model.RecipeRequest;
 
-@using (Html.BeginForm())
+<h1>Recipe Recommendation</h1>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
 {
-    <div>
-        <label>Budget:</label>
-        @Html.TextBoxFor(m => m.Budget)
+    <div class="mb-3">
+        <label for="Budget" class="form-label">Budget:</label>
+        @Html.TextBoxFor(m => m.Budget, new { @class = "form-control", @id = "Budget" })
     </div>
 
-    <div>
-        <label>Ingredients (comma-separated):</label>
-        @Html.TextAreaFor(m => m.Ingredients)
+    <div class="mb-3">
+        <label for="Ingredients" class="form-label">Ingredients (comma-separated):</label>
+        @Html.TextAreaFor(m => m.Ingredients, new { @class = "form-control", @id = "Ingredients", rows = 3 })
     </div>
 
-    <div>
-        <label>Preferences (e.g., vegetarian, spicy):</label>
-        @Html.TextBoxFor(m => m.Preferences)
+    <div class="mb-3">
+        <label for="Preferences" class="form-label">Preferences (e.g., vegetarian, spicy):</label>
+        @Html.TextBoxFor(m => m.Preferences, new { @class = "form-control", @id = "Preferences" })
     </div>
 
-    <div>
-        <label>Dish Type:</label>
-        <!-- Dropdown with default as Filipino -->
-        @Html.DropDownListFor(m => m.DishType, new SelectList(new List<string> { "Filipino", "Italian", "Chinese", "Mexican" }, "Filipino"))
+    <div class="mb-3">
+        <label for="DishType" class="form-label">Dish Type:</label>
+        @Html.DropDownListFor(m => m.DishType, new SelectList(new List<string> { "Filipino", "Italian", "Chinese", "Mexican" }, "Filipino"), new { @class = "form-select", @id = "DishType" })
     </div>
 
-    <div>
-        <label>Meal Time:</label>
-        <!-- Dropdown for meal time options -->
-        @Html.DropDownListFor(m => m.MealTime, new SelectList(new List<string> { "Breakfast", "Lunch", "Dinner", "Snack" }))
+    <div class="mb-3">
+        <label for="MealTime" class="form-label">Meal Time:</label>
+        @Html.DropDownListFor(m => m.MealTime, new SelectList(new List<string> { "Breakfast", "Lunch", "Dinner", "Snack" }), new { @class = "form-select", @id = "MealTime" })
     </div>
 
-    <button type="submit">Get Recipe</button>
+    <button type="submit" class="btn btn-primary">Get Recipe</button>
 }

@@ -1,6 +1,16 @@
-﻿@model CS2ARonaldAbel_MVCPROJECT.BusLogic.Model.RecipeResponse;
+﻿@model CS2ARonaldAbel_MVCPROJECT.BusLogic.Model.RecipeResponse;  
+@{  
+  ViewData["Title"] = "Recipe Result";  
+}  
 
-<h2>Recommended Recipe</h2>
-<pre>@Model.Reply</pre>
+<h1>Generated Recipe</h1>  
 
-<a href="@Url.Action("Index", "Recipe")">Try Again</a>
+<div class="recipe-content">  
+  @Html.Raw(Model.ReplyHtml)  
+</div>  
+
+<div class="back-button">  
+  <a asp-page="/Index" class="btn btn-primary">Back to Index</a>  
+</div>  
+
+<link rel="stylesheet" href="~/css/recipe-style.css" asp-append-version="true" />

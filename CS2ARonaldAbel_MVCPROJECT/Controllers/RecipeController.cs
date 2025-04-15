@@ -4,6 +4,7 @@ using System.Text;
 using CS2ARonaldAbel_MVCPROJECT.BusLogic.Model;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Markdig;
 
 public class RecipeController : Controller
 {
@@ -22,12 +23,22 @@ public class RecipeController : Controller
                         $"The recipe should be for a {model.DishType} dish intended for {model.MealTime}. " +
                         $"Recommend 1–2 simple recipes with estimated cost and easy-to-follow instructions.";
 
-        var response = await CallGroqLLM(prompt);
-        var recipe = new RecipeResponse { Reply = response };
+        string rawResponse = await CallGroqLLM(prompt); // Assuming CallGroqLLM returns a string
 
-        return View("Result", recipe);
+        var pipeline = new MarkdownPipelineBuilder()
+                            .UseAdvancedExtensions()
+                            .Build();
+
+        string htmlResponse = Markdown.ToHtml(rawResponse ?? string.Empty, pipeline); 
+        var recipeViewModel = new RecipeResponse
+        {
+            Reply = rawResponse,
+            ReplyHtml = htmlResponse
+        };
+
+        return View("Result", recipeViewModel);
     }
-    
+
     private async Task<string> CallGroqLLM(string prompt)
     {
         var apiKey = "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";

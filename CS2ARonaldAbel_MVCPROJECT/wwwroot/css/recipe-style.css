@@ -1,0 +1,22 @@
+﻿.recipe-content {
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.recipe-content strong {
+    /* Style bold text - often used for recipe titles by LLMs */
+    display: block;
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+}
+
+.recipe-content ul, .recipe-content ol {
+    margin-left: 20px;
+    padding-left: 15px;
+}
