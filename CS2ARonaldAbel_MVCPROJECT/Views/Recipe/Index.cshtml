@@ -1,0 +1,33 @@
+﻿@model CS2ARonaldAbel_MVCPROJECT.BusLogic.Model.RecipeRequest;
+
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Budget:</label>
+        @Html.TextBoxFor(m => m.Budget)
+    </div>
+
+    <div>
+        <label>Ingredients (comma-separated):</label>
+        @Html.TextAreaFor(m => m.Ingredients)
+    </div>
+
+    <div>
+        <label>Preferences (e.g., vegetarian, spicy):</label>
+        @Html.TextBoxFor(m => m.Preferences)
+    </div>
+
+    <div>
+        <label>Dish Type:</label>
+        <!-- Dropdown with default as Filipino -->
+        @Html.DropDownListFor(m => m.DishType, new SelectList(new List<string> { "Filipino", "Italian", "Chinese", "Mexican" }, "Filipino"))
+    </div>
+
+    <div>
+        <label>Meal Time:</label>
+        <!-- Dropdown for meal time options -->
+        @Html.DropDownListFor(m => m.MealTime, new SelectList(new List<string> { "Breakfast", "Lunch", "Dinner", "Snack" }))
+    </div>
+
+    <button type="submit">Get Recipe</button>
+}
