@@ -18,7 +18,6 @@ public class RecipeController : Controller
     [HttpPost]
     public async Task<ActionResult> Index(RecipeRequest model)
     {
-        // Build the prompt with additional dish type and meal time information.
         string prompt = $"You are a recipe assistant. The user has a budget of {model.Budget}, available ingredients: {model.Ingredients}, and preferences: {model.Preferences}. " +
                         $"The recipe should be for a {model.DishType} dish intended for {model.MealTime}. " +
                         $"Recommend 1–2 simple recipes with estimated cost and easy-to-follow instructions.";
@@ -50,7 +49,6 @@ public class RecipeController : Controller
 
         if (!httpResponse.IsSuccessStatusCode)
         {
-            // If something went wrong, handle it.
             var errorContent = await httpResponse.Content.ReadAsStringAsync();
             return $"Error: {httpResponse.StatusCode} - {errorContent}";
         }
@@ -59,13 +57,10 @@ public class RecipeController : Controller
 
         dynamic json = JsonConvert.DeserializeObject(jsonString);
 
-        // Check if the parts we need are there
         if (json == null || json.choices == null || json.choices.Count == 0)
         {
             return "The response did not contain the expected data.";
         }
-
-        // Now we safely access the data.
         return json.choices[0].message.content;
     }
 
