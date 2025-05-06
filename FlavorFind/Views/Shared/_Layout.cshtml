@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlavorFind</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/CS2ARonaldAbel_MVCPROJECT.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="d-flex" style="min-height: 100vh;">
+        <!-- Sidebar -->
+        <aside class="sidebar d-flex flex-column align-items-center p-3 text-white">
+            <img src="~/images/flavorfind-logo.png" alt="Logo" class="mb-4" style="width: 40px;" />
+            <nav class="nav flex-column text-center w-100">
+                <a class="nav-link text-white" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i></a>
+                <a class="nav-link text-white" asp-controller="Recipe" asp-action="Index"><i class="fas fa-robot"></i></a>
+                <a class="nav-link text-white" asp-controller="Recipe" asp-action="Create"><i class="fas fa-plus"></i></a>
+                <a class="nav-link text-white" asp-controller="Recipe" asp-action="Saved"><i class="fas fa-bookmark"></i></a>
+                <a class="nav-link text-white" asp-controller="Account" asp-action="Index"><i class="fas fa-user"></i></a>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="content flex-grow-1 p-4">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
