@@ -1,0 +1,29 @@
+body {
+    background-color: #111;
+    color: #fff;
+}
+
+.sidebar {
+    width: 80px;
+    background-color: #1e1e1e;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+    .sidebar .nav-link {
+        font-size: 24px;
+        margin: 20px 0;
+        padding: 10px 0;
+    }
+
+        .sidebar .nav-link:hover {
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+.content {
+    margin-left: 80px;
+    padding-top: 30px;
+}
